@@ -28,7 +28,12 @@ gameModes.forEach(el => {
     startGame();
   });
 });
-restartBtn.addEventListener('click', () => location.reload());
+
+restartBtn.addEventListener('click', () => {
+  gameOverScr.classList.add('hidden');
+  gameMenu.classList.remove('hidden');
+  resetGame();
+});
 
 /* ======== Játék indítása ======== */
 function startGame() {
@@ -111,7 +116,9 @@ function checkMatch() {
       b.card.parentElement.replaceChild(emptyCardB, b.card);
     }, 1000);
 
-    if (++matchedPairs === totalPairs) endGame();
+    if (++matchedPairs === totalPairs) {
+      endGame(); // Játék vége, ha minden pár megtalálva
+    }
     flippedCards = [];
   } else {
     setTimeout(() => {
@@ -147,8 +154,25 @@ const updateTimer = () =>
 
 /* ======== Vége ======== */
 function endGame() {
+  clearInterval(timerInt);  // Leállítjuk az időzítőt
+  gameBoard.style.display = 'none';  // Elrejtjük a játékteret
+
+  // Megjelenítjük a végeredmény képernyőt és a restart gombot
+  gameOverScr.style.display = 'flex';  // A gameOver képernyőt láthatóvá tesszük
+  finalTime.textContent = `${Math.floor(timer / 60)} perc, ${timer % 60} másodperc`;  // A játékidő megjelenítése
+
+  restartBtn.style.display = 'block';  // A restart gomb megjelenítése
+}
+
+function resetGame() {
+  selectedMode = null;  
+  flippedCards = [];
+  matchedPairs = 0;
+  timer = 0;
+  updateTimer();
   clearInterval(timerInt);
-  gameBoard.classList.add('hidden');
-  gameOverScr.classList.remove('hidden');
-  finalTime.textContent = `${Math.floor(timer / 60)} perc, ${timer % 60} másodperc`;
+  cardContainer.innerHTML = '';
+  gameOverScr.classList.add('hidden');
+  gameMenu.classList.remove('hidden');
+  restartBtn.classList.add('hidden');
 }
