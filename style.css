@@ -176,6 +176,37 @@ h2 {
   background-color: transparent;
 }
 
+/* ======== Vége képernyő stílusai ======== */
+#gameOver {
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+#restartBtn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#restartBtn:hover {
+  background-color: #d32f2f;
+}
+
+#restartBtn img {
+  width: 80px;
+  height: auto;
+}
+
 /* ======== Tablet (közepes kijelző) ======== */
 @media (max-width: 768px) {
   h2 {
