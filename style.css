@@ -1,3 +1,4 @@
+/* ======== Alapstílusok ======== */
 body {
   margin: 0;
   font-family: sans-serif;
@@ -65,6 +66,7 @@ h2 {
   justify-content: space-evenly;
   width: 100%;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .gameMode {
@@ -73,12 +75,6 @@ h2 {
   margin: 10px;
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-.gameMode img {
-  border-radius: 50%;
-  width: 100%;
-  height: auto;
 }
 
 #gameBoard {
@@ -102,8 +98,8 @@ h2 {
 
 #cardContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 12px;
   width: 90%;
   max-width: 1200px;
   margin-top: 20px;
@@ -180,22 +176,70 @@ h2 {
   background-color: transparent;
 }
 
+/* ======== Tablet (közepes kijelző) ======== */
 @media (max-width: 768px) {
-  #gameMenu img,
-  #startBtn {
-    width: 120px;
-  }
   h2 {
     font-size: 1.5rem;
   }
+
+  #startBtn img,
+  .gameMode {
+    width: 120px;
+  }
+
+  #cardContainer {
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 8px;
+  }
+
+  #timer {
+    font-size: 1.2rem;
+  }
 }
 
+/* ======== Telefon (kicsi kijelző) ======== */
 @media (max-width: 480px) {
-  #gameMenu img,
-  #startBtn {
-    width: 100px;
+  body {
+    font-size: 14px;
   }
+
   h2 {
     font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  #startBtn img,
+  .gameMode {
+    width: 100px;
+  }
+
+  .gameModes {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  #cardContainer {
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    gap: 4px;
+  }
+
+  #timer {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  #gameOver h2 {
+    font-size: 1.3rem;
+  }
+
+  #gameOver p {
+    font-size: 1rem;
+  }
+
+  #restartBtn {
+    font-size: 1rem;
+    padding: 8px 16px;
+    margin-top: 10px;
   }
 }
